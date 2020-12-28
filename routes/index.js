@@ -20,6 +20,10 @@ router.get('/',async(req, res, next)=> {
           kind = 'sample';
           datas = await Sample.find({}).sort({end_at:'desc'});
         break;
+      case "pointelement":
+          title = 'Point Element';
+          kind = 'pointelement';
+        break;
     }
     
     res.render('index', { numeral,moment, title: title , user:req.user, page:req.query.page, datas:datas, kind:kind});

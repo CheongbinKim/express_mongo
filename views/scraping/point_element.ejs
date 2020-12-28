@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="iframebody">
+        <iframe style="width:100%;min-height: 700px;" src="https://www.maersk.com/schedules/"></iframe>
+    </div>
+</div>
+
+
+<script>
+    var target=null;
+    $(document).on('mousemove', function(e){
+        var el = $(document.elementFromPoint(e.clientX,e.clientY));
+        console.log(el.get(0).nodeName);
+        if (el.get(0).nodeName == "IFRAME"){
+            console.log(el.contentWindow);
+            el = el.get(0).contentWindow.document.elementFromPoint(e.clientX,e.clientY);
+        }
+        //console.log(el);
+        el.addClass('kscrping-active');
+
+        if(target == null){
+            target = el;
+        }else{
+            if(target.get(0) != el.get(0)){
+                target.removeClass('kscrping-active');
+                target = el;
+            }e
+        }
+    })
+</script>
